@@ -1,5 +1,9 @@
 # spring-cloud-example-in-kubernetes
 
+## 0. Structure
+![Structure](./image.png)
+
+
 ## 1. Git clone
 ```
 git clone https://github.com/atropos0116/spring-cloud-example-in-kubernetes.git
