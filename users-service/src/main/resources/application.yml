@@ -1,0 +1,14 @@
+management.endpoint.restart.enabled: true
+logging.level.org.springframework.cloud.kubernetes: DEBUG
+spring.application.name: users-service
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info,refresh,keepalive,health
+
+spring.datasource.driverClassName: org.postgresql.Driver
+spring.datasource.url: jdbc:postgresql://${POSTGRES_HOST}:5432/postgres
+spring.datasource.username: ${POSTGRES_USER}
+spring.datasource.password: ${POSTGRES_PASSWORD}
+spring.jpa.hibernate.ddl-auto: update

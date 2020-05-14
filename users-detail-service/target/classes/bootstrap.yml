@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    kubernetes:
+      config:
+        enabled: true
+        enableApi: true
+        name: users-detail-service
+        namespace: default
+        sources:
+          - namespace: default
+            name: users-detail-service
+      reload:
+        enabled: true
+        mode: polling
+        strategy: refresh
+
+

@@ -1,0 +1,33 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: config-server
+spec:
+  selector:
+    app: config-server
+  ports:
+    - protocol: TCP
+      port: 8080
+      nodePort: 30085
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config-server
+  namespace: default
+
+spec:
+  selector:
+    matchLabels:
+      app: config-server
+  replicas: 1
+  template:
+    metadata:
+      name: config-server
+      labels:
+        app: config-server
+    spec:
+      containers:
+      - name: config-server
+        image: atropos0116/config-server:v1
