@@ -22,12 +22,21 @@ public class UsersController {
 	RestTemplate restTemplate;
 	
 	@RequestMapping(value="/{userId}",method = RequestMethod.GET)
-	public User getUser(@PathVariable("userId") String userId) {
+	public String getUser(@PathVariable("userId") String userId) {
+		System.out.println("Call user detail API - userId : " + userId);
 		
-		String url = "http://users-detail-service:8080/users/detail/" + userId;
+		User user = usersService.getUser(userId);
+		
+		System.out.println(user.toString());
+		
+		String url = "http://users-detail-service:8080/users/detail/" + user.getId();
 		ResponseEntity<String> responseEntity = restTemplate.getForEntity(url, String.class);
 		System.out.println("Calling via Discovery Client ... " + responseEntity.getBody());
 		
-		return usersService.getUser(userId);
+		StringBuilder sb = new StringBuilder();
+		sb.append(user.toString());
+		sb.append(responseEntity.getBody());
+		
+		return sb.toString();
 	}
 }
