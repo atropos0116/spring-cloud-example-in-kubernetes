@@ -2,6 +2,7 @@ config-server/target
 users-service/target
 users-detail-service/target
 !.mvn/wrapper/maven-wrapper.jar
+pom.properties
 
 ### STS ###
 .apt_generated
