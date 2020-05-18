@@ -1,21 +1,8 @@
-kind: Service
-apiVersion: v1
-metadata:
-  name: users-detail-service
-spec:
-  selector:
-    app: users-detail-service
-  ports:
-    - protocol: TCP
-      port: 8080
-      nodePort: 30087
-  type: NodePort
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: users-detail-service
-  namespace: default
+  namespace: dev
 
 spec:
   selector:

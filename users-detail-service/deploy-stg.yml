@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: users-detail-service
+  namespace: stg
+
+spec:
+  selector:
+    matchLabels:
+      app: users-detail-service
+  replicas: 1
+  template:
+    metadata:
+      name: users-detail-service
+      labels:
+        app: users-detail-service
+    spec:
+      containers:
+      - name: users-detail-service
+        env:
+          - name: POSTGRES_USER
+            valueFrom:
+              configMapKeyRef:
+                name: detail-postgres-config
+                key: postgres_user
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              configMapKeyRef:
+                name: detail-postgres-config
+                key: postgres_password
+          - name: POSTGRES_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: detail-postgres-config
+                key: postgres_host
+        image: atropos0116/users-detail-service:v2
+        ports:
+          - containerPort: 8081

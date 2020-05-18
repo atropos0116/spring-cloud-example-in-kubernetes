@@ -2,6 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: postgres-pv-claim
+  namespace: dev
 spec:
   accessModes:
     - ReadWriteOnce
@@ -13,6 +14,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: postgres
+  namespace: dev
 spec:
   selector:
     matchLabels:
@@ -53,6 +55,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: users-postgres
+  namespace: dev
 spec:
   type: ClusterIP
   ports:
@@ -60,4 +63,18 @@ spec:
   clusterIP: 10.101.56.2
   selector:
     app: postgres
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: users-service
+  namespace: dev
+spec:
+  selector:
+    app: users-service
+  ports:
+    - protocol: TCP
+      port: 8080
+      nodePort: 30086
+  type: NodePort
 

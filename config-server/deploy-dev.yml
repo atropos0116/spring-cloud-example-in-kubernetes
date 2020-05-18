@@ -2,6 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: config-server
+  namespace: dev
 spec:
   selector:
     app: config-server
@@ -15,7 +16,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: config-server
-  namespace: default
+  namespace: dev
 
 spec:
   selector:
