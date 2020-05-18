@@ -4,6 +4,7 @@ metadata:
   name: users-postgres-config
   namespace: default
 data:
+  postgres_host: 10.101.56.2
   postgres_user: admin
   postgres_password: c1oudc0w
 ---
@@ -13,5 +14,6 @@ metadata:
   name: detail-postgres-config
   namespace: default
 data:
+  postgres_host: 10.107.249.50
   postgres_user: admin
   postgres_password: c1oudc0w
