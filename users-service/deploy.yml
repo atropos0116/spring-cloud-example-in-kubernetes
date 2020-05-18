@@ -34,16 +34,18 @@ spec:
           - name: POSTGRES_USER
             valueFrom:
               configMapKeyRef:
-                name: postgres-config
+                name: users-postgres-config
                 key: postgres_user
           - name: POSTGRES_PASSWORD
             valueFrom:
               configMapKeyRef:
-                name: postgres-config
+                name: users-postgres-config
                 key: postgres_password
           - name: POSTGRES_HOST
             valueFrom:
               configMapKeyRef:
-                name: hostname-config
-                key: postgres_host
-        image: atropos0116/users-service:v1
+                name: postgres-host-config
+                key: users_postgres_host
+        image: atropos0116/users-service:v2
+        ports:
+          - containerPort: 8082

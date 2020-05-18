@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: deatil-postgres-pv-claim
+  name: detail-postgres-pv-claim
 spec:
   accessModes:
     - ReadWriteOnce
@@ -12,20 +12,20 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deatil-postgres
+  name: detail-postgres
 spec:
   selector:
     matchLabels:
-      app: deatil-postgres
+      app: detail-postgres
   template:
     metadata:
       labels:
-        app: deatil-postgres
+        app: detail-postgres
     spec:
       volumes:
-        - name: deatil-postgres-storage
+        - name: detail-postgres-storage
           persistentVolumeClaim:
-            claimName: deatil-postgres-pv-claim
+            claimName: detail-postgres-pv-claim
       containers:
         - image: postgres
           name: postgres
@@ -33,29 +33,30 @@ spec:
             - name: POSTGRES_USER
               valueFrom:
                 configMapKeyRef:
-                  name: postgres-config
+                  name: detail-postgres-config
                   key: postgres_user
             - name: POSTGRES_PASSWORD
               valueFrom:
                 configMapKeyRef:
-                  name: postgres-config
+                  name: detail-postgres-config
                   key: postgres_password
             - name: PGDATA
               value: /var/lib/postgresql/data/pgdata
           ports:
             - containerPort: 5432
-              name: deatil-postgres
+              name: detail-postgres
           volumeMounts:
-            - name: deatil-postgres-storage
+            - name: detail-postgres-storage
               mountPath: /var/lib/postgresql/data
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: deatil-postgres
+  name: detail-postgres
 spec:
   type: ClusterIP
   ports:
-    - port: 5433
+    - port: 5432
   selector:
-    app: deatil-postgres
+    app: detail-postgres
+

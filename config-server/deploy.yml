@@ -30,4 +30,4 @@ spec:
     spec:
       containers:
       - name: config-server
-        image: atropos0116/config-server:v1
+        image: atropos0116/config-server:v2

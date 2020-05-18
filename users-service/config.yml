@@ -33,12 +33,12 @@ spec:
             - name: POSTGRES_USER
               valueFrom:
                 configMapKeyRef:
-                  name: postgres-config
+                  name: users-postgres-config
                   key: postgres_user
             - name: POSTGRES_PASSWORD
               valueFrom:
                 configMapKeyRef:
-                  name: postgres-config
+                  name: users-postgres-config
                   key: postgres_password
             - name: PGDATA
               value: /var/lib/postgresql/data/pgdata
@@ -52,10 +52,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: postgres
+  name: users-postgres
 spec:
   type: ClusterIP
   ports:
     - port: 5432
   selector:
     app: postgres
+
