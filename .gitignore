@@ -1,9 +1,3 @@
-config-server/target
-users-service/target
-users-detail-service/target
-!.mvn/wrapper/maven-wrapper.jar
-pom.properties
-
 ### STS ###
 .apt_generated
 .classpath
@@ -11,17 +5,3 @@ pom.properties
 .project
 .settings
 .springBeans
-
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
-### NetBeans ###
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
