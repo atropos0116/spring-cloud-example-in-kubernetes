@@ -1,9 +1,9 @@
 # spring-cloud-example-in-kubernetes
 
 ## 0. Structure
-![Structure](./image01.png)
-
 ![Structure](./image02.png)
+
+![Structure](./image03.png)
 
 
 ## 1. Git clone
