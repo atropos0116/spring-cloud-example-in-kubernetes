@@ -1,7 +1,9 @@
 # spring-cloud-example-in-kubernetes
 
 ## 0. Structure
-![Structure](./image.png)
+![Structure](./image01.png)
+
+![Structure](./image02.png)
 
 
 ## 1. Git clone
@@ -29,20 +31,28 @@ docker push <your Docker Hub account>/users-detail-service:v1
 ```
 
 ## 4. Skaffold dev
+profile : dev
 ```
 cd config-server
-skaffold run
+skaffold run -p dev
 
 cd users-service
-skaffold run
+skaffold run -p dev
 
 cd users-detail-service
-skaffold dev
+skaffold dev -p dev
 ```
 
-## 5. Create a config map with the hostname of Postgres
+profile : stg
 ```
-kubectl create configmap hostname-config --from-literal=postgres_host=$(kubectl get svc postgres -o jsonpath="{.spec.clusterIP}")
+cd config-server
+skaffold run -p stg
+
+cd users-service
+skaffold run -p stg
+
+cd users-detail-service
+skaffold dev -p stg
 ```
 
 ## 6. Test
@@ -61,9 +71,6 @@ kubectl set image deployment/users-detail-service users-detail-service=<your Doc
 
 ## 8. Skaffold Clean up
 ```
-Ctrl + C or skaffold delete
+Ctrl + C or skaffold delete -p dev or skaffold delete -p stg
 ```
 
-```
-kubectl delete cm hostname-config
-```
