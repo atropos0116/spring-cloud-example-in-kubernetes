@@ -1,0 +1,6 @@
+spring\cloud\kubernetes\users\detail\service\UsersDetailServiceApplication.class
+spring\cloud\kubernetes\users\detail\service\model\UserDetail.class
+spring\cloud\kubernetes\users\detail\service\model\UserDetail$UserDetailBuilder.class
+spring\cloud\kubernetes\users\detail\service\repository\UsersDetailRepository.class
+spring\cloud\kubernetes\users\detail\service\controller\UsersDetailController.class
+spring\cloud\kubernetes\users\detail\service\service\UsersDetailService.class

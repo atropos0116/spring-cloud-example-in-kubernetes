@@ -1,0 +1,5 @@
+spring\cloud\kubernetes\users\service\controller\UsersController.class
+spring\cloud\kubernetes\users\service\repository\UsersRepository.class
+spring\cloud\kubernetes\users\service\model\User.class
+spring\cloud\kubernetes\users\service\service\UsersService.class
+spring\cloud\kubernetes\users\service\UserServiceApplication.class
