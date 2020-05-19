@@ -19,6 +19,30 @@ spec:
       containers:
         - image: postgres
           name: postgres
+          livenessProbe:
+            exec:
+              command:
+                - psql
+                - -w
+                - -U
+                - admin
+                - -d
+                - postgres
+                - -c
+                - 'SELECT 1'
+            timeoutSeconds: 10
+          readinessProbe:
+            exec:
+              command:
+                - psql
+                - -w
+                - -U
+                - admin
+                - -d
+                - postgres
+                - -c
+                - 'SELECT 1'
+            timeoutSeconds: 10
           env:
             - name: POSTGRES_USER
               valueFrom:
@@ -58,6 +82,11 @@ spec:
     spec:
       containers:
       - name: users-service
+        livenessProbe:
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 15
+          timeoutSeconds: 10
         env:
           - name: POSTGRES_USER
             valueFrom:

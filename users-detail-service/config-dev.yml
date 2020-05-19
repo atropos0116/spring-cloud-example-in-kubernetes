@@ -10,47 +10,6 @@ spec:
     requests:
       storage: 32Gi
 ---
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: detail-postgres
-  namespace: dev
-spec:
-  selector:
-    matchLabels:
-      app: detail-postgres
-  template:
-    metadata:
-      labels:
-        app: detail-postgres
-    spec:
-      volumes:
-        - name: detail-postgres-storage
-          persistentVolumeClaim:
-            claimName: detail-postgres-pv-claim
-      containers:
-        - image: postgres
-          name: postgres
-          env:
-            - name: POSTGRES_USER
-              valueFrom:
-                configMapKeyRef:
-                  name: detail-postgres-config
-                  key: postgres_user
-            - name: POSTGRES_PASSWORD
-              valueFrom:
-                configMapKeyRef:
-                  name: detail-postgres-config
-                  key: postgres_password
-            - name: PGDATA
-              value: /var/lib/postgresql/data/pgdata
-          ports:
-            - containerPort: 5432
-              name: detail-postgres
-          volumeMounts:
-            - name: detail-postgres-storage
-              mountPath: /var/lib/postgresql/data
----
 apiVersion: v1
 kind: Service
 metadata:
