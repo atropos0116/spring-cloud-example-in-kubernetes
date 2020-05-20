@@ -18,7 +18,5 @@ cache:
     - '$HOME/.m2/repository'
 
 script: 
-   - "./config-server/mvnw -DskipTests package"
-   - "./users-service/mvnw -DskipTests package"
-   - "./users-detail-service/mvnw -DskipTests package"
+   - "docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD"
    - "skaffold run -p dev"
