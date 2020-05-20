@@ -32,3 +32,18 @@ spec:
       containers:
       - name: config-server
         image: atropos0116/config-server:v2
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: users-ingress
+  namespace: dev
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /users/*
+        backend:
+          serviceName: users-service
+          servicePort: 8080
+
