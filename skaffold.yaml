@@ -1,6 +1,8 @@
 apiVersion: skaffold/v1
 kind: Config
 build:
+  googleCloudBuild:
+    projectId: nifty-inn-274523
   tagPolicy:
     dateTime:
       format: "2020-05-13_13-13-32.999_MST"
@@ -15,7 +17,6 @@ build:
     - image: gcr.io/nifty-inn-274523/users-detail-service
       docker:
         dockerfile: users-detail-service/Dockerfile
-  local: {}
 
 deploy:
   kubectl:
