@@ -1,0 +1,17 @@
+language: java
+jdk:
+  - openjdk8
+
+branches:
+  only:
+    - develop
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+
+script: 
+   - "./config-server/mvnw -DskipTests package"
+   - "./users-service/mvnw -DskipTests package"
+   - "./users-detail-service/mvnw -DskipTests package"
+   - skaffold dev -p dev
