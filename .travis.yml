@@ -1,6 +1,9 @@
 language: java
 jdk:
   - openjdk8
+before_install:
+  - curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.7.0/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
+  - curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && chmod +x skaffold && sudo mv skaffold /usr/local/bin/
 
 branches:
   only:
@@ -14,4 +17,4 @@ script:
    - "./config-server/mvnw -DskipTests package"
    - "./users-service/mvnw -DskipTests package"
    - "./users-detail-service/mvnw -DskipTests package"
-   - "skaffold dev -p dev"
+   - "skaffold run -p dev"
