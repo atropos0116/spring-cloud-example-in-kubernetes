@@ -14,4 +14,4 @@ script:
    - "./config-server/mvnw -DskipTests package"
    - "./users-service/mvnw -DskipTests package"
    - "./users-detail-service/mvnw -DskipTests package"
-   - skaffold dev -p dev
+   - "skaffold dev -p dev"
