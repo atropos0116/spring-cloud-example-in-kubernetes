@@ -1,22 +1,21 @@
 apiVersion: skaffold/v1
 kind: Config
 build:
-  googleCloudBuild:
-    projectId: nifty-inn-274523
   tagPolicy:
     dateTime:
       format: "2020-05-13_13-13-32.999_MST"
       timezone: "Local"
   artifacts:
-    - image: gcr.io/nifty-inn-274523/config-server
+    - image: atropos0116/config-server
       docker:
         dockerfile: config-server/Dockerfile
-    - image: gcr.io/nifty-inn-274523/users-service
+    - image: atropos0116/users-service
       docker:
         dockerfile: users-service/Dockerfile	
-    - image: gcr.io/nifty-inn-274523/users-detail-service
+    - image: atropos0116/users-detail-service
       docker:
         dockerfile: users-detail-service/Dockerfile
+  local: {}
 
 deploy:
   kubectl:
@@ -27,6 +26,8 @@ deploy:
       
 profiles:
 - name: dev
+  activation:
+    - kubeContext: minikube
   deploy:
       kubectl:
         manifests:
@@ -34,6 +35,8 @@ profiles:
           - 'users-service/*-dev.yml'
           - 'users-detail-service/*-dev.yml'
 - name: stg
+  activation:
+    - kubeContext: minikube
   deploy:
       kubectl:
         manifests:
