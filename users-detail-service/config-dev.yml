@@ -19,7 +19,7 @@ spec:
   type: ClusterIP
   ports:
     - port: 5432
-  clusterIP: 10.107.249.50
+  clusterIP: 10.113.10.101
   selector:
     app: detail-postgres
 ---
@@ -35,4 +35,4 @@ spec:
     - protocol: TCP
       port: 8080
       nodePort: 30087
-  type: NodePort
+  type: LoadBalancer
