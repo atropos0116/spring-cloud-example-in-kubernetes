@@ -18,5 +18,5 @@ cache:
     - '$HOME/.m2/repository'
 
 script: 
-   - "docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD"
+   - "docker login gcr.io"
    - "skaffold run -p dev"
