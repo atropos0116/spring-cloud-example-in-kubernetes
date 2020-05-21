@@ -1,4 +1,4 @@
-language: java
+nguage: java
 jdk:
   - openjdk8
 
@@ -11,12 +11,11 @@ before_install:
 
 branches:
   only:
-    - develop-gcr
+    - develop
 
 cache:
   directories:
     - '$HOME/.m2/repository'
 
 script: 
-   - "docker login gcr.io"
-   - "skaffold run -p dev"
+  - "skaffold run -p dev"
