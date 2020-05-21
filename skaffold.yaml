@@ -2,20 +2,23 @@ apiVersion: skaffold/v1
 kind: Config
 build:
   tagPolicy:
-    dateTime:
-      format: "2020-05-13_13-13-32.999_MST"
-      timezone: "Local"
+    gitCommit: {}
   artifacts:
-    - image: atropos0116/config-server
-      docker:
+    - image: gcr.io/nifty-inn-274523/config-server
+      kaniko:
         dockerfile: config-server/Dockerfile
-    - image: atropos0116/users-service
-      docker:
-        dockerfile: users-service/Dockerfile	
-    - image: atropos0116/users-detail-service
-      docker:
+        image: gcr.io/nifty-inn-274523/config-server
+    - image: gcr.io/nifty-inn-274523/users-service
+      kaniko:
+        dockerfile: users-service/Dockerfile
+        image: gcr.io/nifty-inn-274523/users-service
+    - image: gcr.io/nifty-inn-274523/users-detail-service
+      kaniko:
         dockerfile: users-detail-service/Dockerfile
-  local: {}
+        image: gcr.io/nifty-inn-274523/users-detail-service
+  googleCloudBuild:
+    projectId: nifty-inn-274523
+    dockerImage: gcr.io/cloud-builders/docker
 
 deploy:
   kubectl:
@@ -23,11 +26,8 @@ deploy:
       - 'config-server/*-dev.yml'
       - 'users-service/*-dev.yml'
       - 'users-detail-service/*-dev.yml'
-      
 profiles:
 - name: dev
-  activation:
-    - kubeContext: minikube
   deploy:
       kubectl:
         manifests:
@@ -35,12 +35,9 @@ profiles:
           - 'users-service/*-dev.yml'
           - 'users-detail-service/*-dev.yml'
 - name: stg
-  activation:
-    - kubeContext: minikube
   deploy:
       kubectl:
         manifests:
           - 'config-server/*-stg.yml'
           - 'users-service/*-stg.yml'
           - 'users-detail-service/*-stg.yml'
-      

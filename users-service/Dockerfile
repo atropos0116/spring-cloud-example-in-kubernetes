@@ -1,4 +1,4 @@
 FROM openjdk:8
-COPY users-service/target/users-service-0.0.1-SNAPSHOT.jar /app.jar
+COPY ./users-service/target/users-service-0.0.1-SNAPSHOT.jar /app.jar
 EXPOSE 8080/tcp
 ENTRYPOINT ["java", "-jar", "/app.jar"]
