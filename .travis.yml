@@ -19,4 +19,11 @@ cache:
 
 script: 
    - "docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD"
-   - "skaffold run -p dev"
+   - cd config-server
+   - ./mvnw -DskipTests package
+   - cd ..
+   - cd users-service
+   - ./mvnw -DskipTests package
+   - cd ..
+   - cd users-detail-service
+   - ./mvnw -DskipTests package
