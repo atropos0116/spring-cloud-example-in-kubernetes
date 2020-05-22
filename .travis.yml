@@ -44,5 +44,6 @@ cache:
 install:
   - gcloud config set project nifty-inn-274523
 
-script: 
+script:
+  - gcloud -q app deploy app.yaml --promote 
   - "skaffold run -p dev"
