@@ -36,10 +36,6 @@ branches:
   only:
     - develop-gcr
 
-env:
-  global:
-    - 
-      
 cache:
   directories:
     - '$HOME/.m2/repository'
