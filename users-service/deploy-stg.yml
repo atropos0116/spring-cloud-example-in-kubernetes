@@ -103,6 +103,6 @@ spec:
               configMapKeyRef:
                 name: users-postgres-config
                 key: postgres_host
-        image: atropos0116/users-service:v2
+        image: gcr.io/nifty-inn-274523/users-service:v1
         ports:
           - containerPort: 8082

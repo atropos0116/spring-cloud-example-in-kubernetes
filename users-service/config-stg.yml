@@ -19,7 +19,7 @@ spec:
   type: ClusterIP
   ports:
     - port: 5432
-  clusterIP: 10.101.56.2
+  clusterIP: 10.113.10.100
   selector:
     app: postgres
 ---
