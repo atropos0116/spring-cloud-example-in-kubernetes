@@ -47,3 +47,4 @@ install:
 script:
   - gcloud -q app deploy app.yaml --promote 
   - "skaffold run -p dev"
+
