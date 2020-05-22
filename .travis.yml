@@ -5,7 +5,29 @@ jdk:
 services:
   - docker
 
+env:
+# Make sure gcloud command is on our PATH and the App Engine SDK is in the Python path
+- GAE_PYTHONPATH=${HOME}/.cache/google_appengine PATH=$PATH:${HOME}/google-cloud-sdk/bin PYTHONPATH=${PYTHONPATH}:${GAE_PYTHONPATH} CLOUDSDK_CORE_DISABLE_PROMPTS=1    
+
 before_install:
+  # Install Google App Engine Python SDK
+  - if [ ! -d "${GAE_PYTHONPATH}" ]; then
+    python scripts/fetch_gae_sdk.py $(dirname "${GAE_PYTHONPATH}");
+    fi
+  # [START auth]
+  # Decrypt the credentials we added to the repo using the key we added with the Travis command line tool
+  - DECRYPT_COMMAND
+  # If the SDK is not already cached, download it and unpack it
+  - if [ ! -d ${HOME}/google-cloud-sdk ]; then
+     curl https://sdk.cloud.google.com | bash;
+    fi
+  - tar -xzf credentials.tar.gz
+  - mkdir -p lib
+  # Here we use the decrypted service account credentials to authenticate the command line tool
+  - gcloud auth activate-service-account --key-file client-secret.json
+  # [END auth]
+  
+  #kubectl, skaffold
   - curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.7.0/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
   - curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && chmod +x skaffold && sudo mv skaffold /usr/local/bin/
 
@@ -13,9 +35,17 @@ branches:
   only:
     - develop-gcr
 
+env:
+  global:
+    - 
+      
 cache:
   directories:
     - '$HOME/.m2/repository'
+    - '%HOME/google-cloud-sdk/'
+
+install:
+  - gcloud config set project nifty-inn-274523
 
 script: 
   - "skaffold run -p dev"
