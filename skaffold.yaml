@@ -17,30 +17,30 @@ build:
         dockerfile: users-detail-service/Dockerfile
   local: {}
 
-deploy:
-  kubectl:
-    manifests:
-      - 'config-server/*-dev.yml'
-      - 'users-service/*-dev.yml'
-      - 'users-detail-service/*-dev.yml'
+#deploy:
+#  kubectl:
+#    manifests:
+#      - 'config-server/*-dev.yml'
+#      - 'users-service/*-dev.yml'
+#      - 'users-detail-service/*-dev.yml'
       
-profiles:
-- name: dev
-  activation:
-    - kubeContext: minikube
-  deploy:
-      kubectl:
-        manifests:
-          - 'config-server/*-dev.yml'
-          - 'users-service/*-dev.yml'
-          - 'users-detail-service/*-dev.yml'
-- name: stg
-  activation:
-    - kubeContext: minikube
-  deploy:
-      kubectl:
-        manifests:
-          - 'config-server/*-stg.yml'
-          - 'users-service/*-stg.yml'
-          - 'users-detail-service/*-stg.yml'
+#profiles:
+#- name: dev
+#  activation:
+#    - kubeContext: minikube
+#  deploy:
+#      kubectl:
+#        manifests:
+#          - 'config-server/*-dev.yml'
+#          - 'users-service/*-dev.yml'
+#          - 'users-detail-service/*-dev.yml'
+#- name: stg
+#  activation:
+#    - kubeContext: minikube
+#  deploy:
+#      kubectl:
+#        manifests:
+#          - 'config-server/*-stg.yml'
+#          - 'users-service/*-stg.yml'
+#          - 'users-detail-service/*-stg.yml'
       
