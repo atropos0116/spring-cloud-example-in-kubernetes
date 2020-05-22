@@ -41,3 +41,4 @@ profiles:
           - 'config-server/*-stg.yml'
           - 'users-service/*-stg.yml'
           - 'users-detail-service/*-stg.yml'
+
