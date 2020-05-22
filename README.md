@@ -1,36 +1,147 @@
 # spring-cloud-example-in-kubernetes
 
-## 0. Structure
-![Structure](./image02.png)
+## 1. Google Cloud Platform
+- `https://cloud.google.com/` -> `Go to console` -> Create `New Project`
+- `https://console.cloud.google.com/kubernetes/` -> Create `Cluster'
+- Active `Cloud Shell`
 
-![Structure](./image03.png)
-
-
-## 1. Git clone
+## 2. Git clone
 ```
-git clone https://github.com/atropos0116/spring-cloud-example-in-kubernetes.git
-```
-
-## 2. Build the Spring Boot apps
-```
-./config-server/mvnw -DskipTests package
-./users-service/mvnw -DskipTests package
-./users-detail-service/mvnw -DskipTests package
+git clone https://github.com/atropos0116/spring-cloud-example-in-kubernetes.git --branch develop-gcr
 ```
 
-## 3. Build a Docker image and push the image to Docker Hub
+## 3. Container Registry
+Change [YOUR_PROJECT_ID] to your project ID.
+
 ```
-docker build -t <your Docker Hub account>/config-server:v1 .
-docker push <your Docker Hub account>/config-server:v1
-
-docker build -t <your Docker Hub account>/users-service:v1 .
-docker push <your Docker Hub account>/users-service:v1
-
-docker build -t <your Docker Hub account>/users-detail-service:v1 .
-docker push <your Docker Hub account>/users-detail-service:v1
+./mvnw com.google.cloud.tools:jib-maven-plugin:build -Dimage=gcr.io/[YOUR_PROJECT_ID]/config-server:v1
+./mvnw com.google.cloud.tools:jib-maven-plugin:build -Dimage=gcr.io/[YOUR_PROJECT_ID]/users-service:v1
+./mvnw com.google.cloud.tools:jib-maven-plugin:build -Dimage=gcr.io/[YOUR_PROJECT_ID]/users-detail-service:v1
 ```
 
-## 4. Skaffold dev
+## 4. gcloud Login
+Changes [YOUR_CLUSTER_NAME] and [YOUR_ZONE] to `your cluster name` and `your project ID.`
+
+```
+gcloud container clusters get-credentials [YOUR_CLUSTER_NAME] --zone [YOUR_ZONE]
+```
+
+## 5. Change skaffold.yml and deploy.yml
+skaffold.yml
+```
+artifacts:
+    - image: gcr.io/[YOUR_PROJECT_ID]/config-server
+      kaniko:
+        dockerfile: config-server/Dockerfile
+        image: gcr.io/[YOUR_PROJECT_ID]/config-server
+    - image: gcr.io/[YOUR_PROJECT_ID]/users-service
+      kaniko:
+        dockerfile: users-service/Dockerfile
+        image: gcr.io/[YOUR_PROJECT_ID]/users-service
+    - image: gcr.io/[YOUR_PROJECT_ID]/users-detail-service
+      kaniko:
+        dockerfile: users-detail-service/Dockerfile
+        image: gcr.io/[YOUR_PROJECT_ID]/users-detail-service
+  googleCloudBuild:
+    projectId: [YOUR_PROJECT_ID]
+    dockerImage: gcr.io/cloud-builders/docker
+```
+
+config-server/deploy-dev.yml, 
+config-server/deploy-stg.yml
+```
+spec:
+  selector:
+    matchLabels:
+      app: config-server
+  replicas: 1
+  template:
+    metadata:
+      name: config-server
+      labels:
+        app: config-server
+    spec:
+      containers:
+      - name: config-server
+        image: gcr.io/[YOUR_PROJECT_ID]/config-server:v1
+```
+
+users-service/deploy-dev.yml,
+users-service/deploy-stg.yml
+```
+spec:
+  selector:
+    matchLabels:
+      app: users-service
+  replicas: 1
+  template:
+    metadata:
+      name: users-service
+      labels:
+        app: users-service
+    spec:
+      containers:
+      - name: users-service
+        env:
+          - name: POSTGRES_USER
+            valueFrom:
+              configMapKeyRef:
+                name: users-postgres-config
+                key: postgres_user
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              configMapKeyRef:
+                name: users-postgres-config
+                key: postgres_password
+          - name: POSTGRES_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: users-postgres-config
+                key: postgres_host
+        image: gcr.io/nifty[YOUR_PROJECT_ID]/users-service:v1
+        ports:
+          - containerPort: 8082
+```
+
+users-detail-service/deploy-dev.yml,
+users-detail-service/deploy-stg.yml
+```
+spec:
+  selector:
+    matchLabels:
+      app: users-detail-service
+  replicas: 1
+  template:
+    metadata:
+      name: users-detail-service
+      labels:
+        app: users-detail-service
+    spec:
+      containers:
+      - name: users-detail-service
+        env:
+          - name: POSTGRES_USER
+            valueFrom:
+              configMapKeyRef:
+                name: detail-postgres-config
+                key: postgres_user
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              configMapKeyRef:
+                name: detail-postgres-config
+                key: postgres_password
+          - name: POSTGRES_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: detail-postgres-config
+                key: postgres_host
+        image: gcr.io/[YOUR_PROJECT_ID]/users-detail-service:v1
+        ports:
+          - containerPort: 8081
+```
+
+
+## 6. Skaffold dev
 profile : dev
 ```
 cd config-server
@@ -55,18 +166,9 @@ cd users-detail-service
 skaffold dev -p stg
 ```
 
-## 6. Test
+## 7. Test
 ```
-http://{your Minikube Service IP}:30086/users/{userId}
-```
-
-## 7. Update application
-```
-kubectl set image deployment/config-server sprconfig-server=<your Docker Hub account>/config-server:v2
-
-kubectl set image deployment/users-service users-service=<your Docker Hub account>/users-service:v2
-
-kubectl set image deployment/users-detail-service users-detail-service=<your Docker Hub account>/users-detail-service:v2
+http://[your Service IP]:30086/users/atropos0116
 ```
 
 ## 8. Skaffold Clean up
