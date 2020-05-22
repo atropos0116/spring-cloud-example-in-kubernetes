@@ -168,7 +168,7 @@ skaffold dev -p stg
 
 ## 7. Test
 ```
-http://[your Service IP]:30086/users/atropos0116
+http://[your Service IP]:8080/users/atropos0116
 ```
 
 ## 8. Skaffold Clean up
