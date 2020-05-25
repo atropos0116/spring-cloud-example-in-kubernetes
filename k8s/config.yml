@@ -1,0 +1,43 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURDekNDQWZPZ0F3SUJBZ0lRQWFRTlVhSWxuUE5aTTkrK1JYaUFZVEFOQmdrcWhraUc5dzBCQVFzRkFEQXYKTVMwd0t3WURWUVFERXlRMFlqQXlNREV5TlMxaU1UTXdMVFF3WVRFdFlUaGlNaTAzWkRNMlpqSmtNVGc0TWpRdwpIaGNOTWpBd05ESXdNREF3TmpNMldoY05NalV3TkRFNU1ERXdOak0yV2pBdk1TMHdLd1lEVlFRREV5UTBZakF5Ck1ERXlOUzFpTVRNd0xUUXdZVEV0WVRoaU1pMDNaRE0yWmpKa01UZzRNalF3Z2dFaU1BMEdDU3FHU0liM0RRRUIKQVFVQUE0SUJEd0F3Z2dFS0FvSUJBUUNZeDVIdklzZHdIL0xpcCt5Rnk2ZWpJVWswRWUvTElnMEoveFcxQ0NURQpTb1kyTG5ZM2NkYXVIZkp3bzBHUG5pNVRYSWlmNkNSbGVzbTd4TTQ0bEl5OFNVTmo1UjREQnhOUXZCZCtnMHhsCitlZGF4MlViR0hDbWZFdzcyRnBFVkUvRmREUytSUHVKMXNQL1RtQlZKVVhpN0o0dVdOaUZVQ05ZRVppZVpWVkQKcS9SQWJVYlh6SlQwQXBsWExBSk0vNXkwOU1yZ1B2TUZScmw5NjBFT0VTeEJGNTFIdWNCYjJsb1N2bkhTT1ljegpob1R1WmMzWEVmWUtuSkhiSmdlY1pPYnBOdGJNS0d3ZlJWcVFVUVhpYWF0bTAza2hyeE9LVEtxVnIwd2VDU20zCnptRXNNT0ZCZGhpdUw5ZS9lV3R5amUwVWdxWmRBbnZJRWt0SUlzME5URURCQWdNQkFBR2pJekFoTUE0R0ExVWQKRHdFQi93UUVBd0lDQkRBUEJnTlZIUk1CQWY4RUJUQURBUUgvTUEwR0NTcUdTSWIzRFFFQkN3VUFBNElCQVFDVwpMa3c2RWx4ditZRVdHdlNnSTZWWUVwV3p3WTdxWDNzUGZ6bVlUYi81ZWZtakZYbU43SkR6K0Q1YnRic2FQZjBSCmt5STVuWFBUcWVZczVwYnh5bHU4SW1nRWNva1FpWFRKWUVyci9oN21UL2MzaWc1YythQTAxYUJOS0l3Nlk0UjAKVWZZMlR4VTBGS294bTAxZGhSWFZyOTNmZUFsVXNZekozNXM1ZGtlRHRNakV0cFM1c1RRaXBudFMwdkw0Vk5IbgptaTZkOVFnMkFzeDhET3lhTXVhMlBxRFdiNEVveFdiY3dCRDlVdjZTeGlITGNtaHhGQXFoTmFVWFJJZHlLMFUwCmp0QTdKd0taZU50Y0NaMzVjRU9UclFSdCtLQXFxQXJ0d3d5K2NKQm9hM2t3azF6UmFqQlZHRjNGVnllTnpQZEUKZkp5ZnZ6blFhYjZGZjZUdDZ5RDcKLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+    server: https://35.201.253.191
+  name: gke_nifty-inn-274523_asia-east1-a_baik-cluster-1
+- cluster:
+    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURDekNDQWZPZ0F3SUJBZ0lRYWx2M3RHbWZIN0dtK3IwQ0dvWTVwekFOQmdrcWhraUc5dzBCQVFzRkFEQXYKTVMwd0t3WURWUVFERXlSaE9EY3pNV016TUMxaVlUbGhMVFF6TURrdFlXTm1NeTFsWmpRMllUTTVPR05oTWpNdwpIaGNOTWpBd05USTFNREV4T1RVeFdoY05NalV3TlRJME1ESXhPVFV4V2pBdk1TMHdLd1lEVlFRREV5UmhPRGN6Ck1XTXpNQzFpWVRsaExUUXpNRGt0WVdObU15MWxaalEyWVRNNU9HTmhNak13Z2dFaU1BMEdDU3FHU0liM0RRRUIKQVFVQUE0SUJEd0F3Z2dFS0FvSUJBUURaNCtjMkxabVBITVN4OEVvWGpoNFVEWkhhZFlENEVrbndoUWJQdU5NdwpmbzdIcVE1VGY2NDVVS05GZ2RZampnQ01KU3RMRlZ2TzlmWU4yTEtUTmFUQ3pLdUdvbVFRbmgxK2g1MHZmb0Z3CkllSkdXS1pndlF1Nmhmdm1QbVlEVnBNK1lMUXNhMjZBQXNIdXRBb2NvRmFnRFRQcEI4cExjOE5CdE85R1AvYTQKbXFOOXhGRkt4V1EwSFVHOTFPMG1MQWloUm8ycW54UlhneXhPUG5pb09RWGtxY1oyVG1VcHQvbitRTVZpWWdPUQp6ZEhlQS96TElwNi9OeDI1UXpvMktQQkViUFlBSWw0a0IwWnNLZU9uTkduVTdscnhlczJ3V2pGUCs2aHpSN01rCnM0NkgyNFV4ZHIyN1ZLZnpCUWVpS3Bja1Z4UWFqMThvQnBVNGlHbllwN0k5QWdNQkFBR2pJekFoTUE0R0ExVWQKRHdFQi93UUVBd0lDQkRBUEJnTlZIUk1CQWY4RUJUQURBUUgvTUEwR0NTcUdTSWIzRFFFQkN3VUFBNElCQVFCQQo0dGRpMk9BMVpyUGU4TmdIMVV5MHNxVVJRTjdZZmNWWG9ORkVlRDgwT0wzN2o4SnZxK1E0b3Q0RGtuVk9YdGNRCkZWVGZBNWxKQW1sYkkzVkJZTE9PQWlyTHh0UjlIM1lMNFQ4NWpRSkVYbGZvMk83dWtadUwvSzloN2NFdGtVeEcKVTU2U05wQUthM3cyL0NrcCtPK25ZYjFyT0JSYnpwSmV1dXBVRjJHTW9sRXMyVmFRQm42VVRKRWlvNVFuRmdmaAp2L1hwTTB5YnBsZU1WU3JmNGhjZ0RtZmhMT1E4Unp6ejVxbE9sSEpYMGIzVzczUG5kQWxSdnJmSys4cW00Qmh3CjZ2UHdQYTlucFhFeCtIdk9zMXEyRUltY0xZbGJPbjBqWUN6WWRSVEl4dnFaSDdtbXZIQlpPcEthMWs5VzZvcGoKbGV1US9rakdDYUVTeVFYYkFLRW8KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+    server: https://34.96.247.89
+  name: gke_nifty-inn-274523_asia-east2-a_cluster-1
+contexts:
+- context:
+    cluster: gke_nifty-inn-274523_asia-east1-a_baik-cluster-1
+    user: gke_nifty-inn-274523_asia-east1-a_baik-cluster-1
+  name: gke_nifty-inn-274523_asia-east1-a_baik-cluster-1
+- context:
+    cluster: gke_nifty-inn-274523_asia-east2-a_cluster-1
+    user: gke_nifty-inn-274523_asia-east2-a_cluster-1
+  name: gke_nifty-inn-274523_asia-east2-a_cluster-1
+current-context: gke_nifty-inn-274523_asia-east2-a_cluster-1
+kind: Config
+preferences: {}
+users:
+- name: gke_nifty-inn-274523_asia-east1-a_baik-cluster-1
+  user:
+    auth-provider:
+      config:
+        cmd-args: config config-helper --format=json
+        cmd-path: /google/google-cloud-sdk/bin/gcloud
+        expiry-key: '{.credential.token_expiry}'
+        token-key: '{.credential.access_token}'
+      name: gcp
+- name: gke_nifty-inn-274523_asia-east2-a_cluster-1
+  user:
+    auth-provider:
+      config:
+        access-token: ya29.a0AfH6SMAP6NDOg7KROMdZGsnPWzmIPJWu3xVonjGE7lKn2GuBIgCaHYoLunM8QVNAj_CsE8us_h4ok1_f7sQhRkCajgJ1aee1jYwIT8do63iuBeXaTx0Dpds2i4IL6W0Dx8cutexVNG9MQgcXTtOFhce6BZIEzAY-h1b-1D3IRzRP0Hu8DdPWKpmood10dTV8dfipyp_4gHkYvzCkET21D8dWneZcb5GTnVUol45VTUN5FziR0ySy8RTnainbJ5PMTNUTJ6Ks8J5V-w
+        cmd-args: config config-helper --format=json
+        cmd-path: /usr/lib/google-cloud-sdk/bin/gcloud
+        expiry: "2020-05-25T06:34:59Z"
+        expiry-key: '{.credential.token_expiry}'
+        token-key: '{.credential.access_token}'
+      name: gcp

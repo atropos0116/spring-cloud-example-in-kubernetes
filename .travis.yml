@@ -19,5 +19,10 @@ before_install:
   - curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && chmod +x skaffold && sudo mv skaffold /usr/local/bin/
 
 script:
+  - mkdir ${HOME}/.kube
+  - cp ./k8s/config.yml ${HOME}/.kube/config
+  - cd ${HOME}/.kube
+  - kubectl config use-context gke_nifty-inn-274523_asia-east2-a_cluster-1
+  - cd ~/spring-cloud-example-in-kubernetes
   - skaffold dev -p dev
 
