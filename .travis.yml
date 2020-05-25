@@ -5,7 +5,7 @@ jdk:
 services:
   - docker
   
-  branches:
+branches:
   only:
     - develop-gcr
 
