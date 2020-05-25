@@ -21,6 +21,7 @@ before_install:
   - export GOOGLE_APPLICATION_CREDENTIALS="${HOME}/build/atropos0116/spring-cloud-example-in-kubernetes/client_api_key.json"
 
 script:
+  - gcloud container clusters get-credentials cluster-1 --zone asia-east2-a --project nifty-inn-274523
   - cd ${HOME}/build/atropos0116/spring-cloud-example-in-kubernetes/config-server
   - skaffold dev -p dev
   - cd ../users-service
