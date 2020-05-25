@@ -24,7 +24,7 @@ script:
   - cp ./k8s/config.yml ${HOME}/.kube/config
   - cd ${HOME}/.kube
   - kubectl config use-context gke_nifty-inn-274523_asia-east2-a_cluster-1
-  - ls
+  - cd ${HOME}
     #  - cd
     #- skaffold dev -p dev
 
