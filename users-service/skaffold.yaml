@@ -1,0 +1,30 @@
+apiVersion: skaffold/v1
+kind: Config
+build:
+  tagPolicy:
+    gitCommit: {}
+  artifacts:
+    - image: gcr.io/nifty-inn-274523/users-service
+      kaniko:
+        dockerfile: Dockerfile
+        image: gcr.io/nifty-inn-274523/users-service
+  googleCloudBuild:
+    projectId: nifty-inn-274523
+    dockerImage: gcr.io/cloud-builders/docker
+
+deploy:
+  kubectl:
+    manifests:
+      - 'users-service/*-dev.yml'
+profiles:
+- name: dev
+  deploy:
+      kubectl:
+        manifests:
+          - 'users-service/*-dev.yml'
+- name: stg
+  deploy:
+      kubectl:
+        manifests:
+          - 'users-service/*-stg.yml'
+

@@ -4,17 +4,9 @@ build:
   tagPolicy:
     gitCommit: {}
   artifacts:
-    - image: gcr.io/nifty-inn-274523/config-server
-      kaniko:
-        dockerfile: config-server/Dockerfile
-        image: gcr.io/nifty-inn-274523/config-server
-    - image: gcr.io/nifty-inn-274523/users-service
-      kaniko:
-        dockerfile: users-service/Dockerfile
-        image: gcr.io/nifty-inn-274523/users-service
     - image: gcr.io/nifty-inn-274523/users-detail-service
       kaniko:
-        dockerfile: users-detail-service/Dockerfile
+        dockerfile: Dockerfile
         image: gcr.io/nifty-inn-274523/users-detail-service
   googleCloudBuild:
     projectId: nifty-inn-274523
@@ -23,22 +15,16 @@ build:
 deploy:
   kubectl:
     manifests:
-      - 'config-server/*-dev.yml'
-      - 'users-service/*-dev.yml'
       - 'users-detail-service/*-dev.yml'
 profiles:
 - name: dev
   deploy:
       kubectl:
         manifests:
-          - 'config-server/*-dev.yml'
-          - 'users-service/*-dev.yml'
           - 'users-detail-service/*-dev.yml'
 - name: stg
   deploy:
       kubectl:
         manifests:
-          - 'config-server/*-stg.yml'
-          - 'users-service/*-stg.yml'
           - 'users-detail-service/*-stg.yml'
 

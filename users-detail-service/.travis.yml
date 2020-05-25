@@ -20,10 +20,5 @@ before_install:
   - curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && chmod +x skaffold && sudo mv skaffold /usr/local/bin/
 
 script:
-  - cd ${HOME}/build/atropos0116/spring-cloud-example-in-kubernetes/config-server
   - skaffold dev -p dev
-  - cd ../users-service
-  - skaffold dev -p dev
-  - cd ../users-detail-service
-  - skaffold dev -p dev 
   
