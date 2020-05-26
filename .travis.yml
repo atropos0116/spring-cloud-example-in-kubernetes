@@ -37,7 +37,7 @@ after_install:
 script:
   - export KUBERNETES_SERVICE_HOST=34.96.203.213
   - export KUBERNETES_SERVICE_PORT=8080
-  - cd ../users-detail-service
+  - cd $SERVICE_HOME/users-detail-service
   - skaffold run -p dev
   - export KUBERNETES_SERVICE_HOST=34.92.244.229
   - export KUBERNETES_SERVICE_PORT=8080
