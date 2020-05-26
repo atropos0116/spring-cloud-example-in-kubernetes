@@ -25,6 +25,8 @@ before_install:
   - sed -i 's/PRIVATE_KEY/${PRIVATE_KEY}/g' api_key.json
   - sed -i 's/CLIENT_EMAIL/${CLIENT_EMAIL}/g' api_key.json
   - sed -i 's/CLIENT_ID/${CLIENT_ID}/g' api_key.json
+  - cd ${SERVICE_HOME}
+  - cat api_key.json
   - export GOOGLE_APPLICATION_CREDENTIALS="${SERVICE_HOME}/api_key.json"
   #[End Authorize]
 
