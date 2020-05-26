@@ -28,6 +28,7 @@ before_install:
   #- cd $SERVICE_HOME
   #- cat api_key.json
   - export GOOGLE_APPLICATION_CREDENTIALS="$SERVICE_HOME/client_api_key.json"
+  - gcloud config set project $PROJECT_ID
   #[End Authorize]
 
 after_install:
