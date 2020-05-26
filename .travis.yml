@@ -34,6 +34,7 @@ before_install:
 after_install:
   #[Attempt Authorize]
   - gcloud auto activate-service-account --key-file ${GOOGLE_APPLICATION_CREDENTIALS}
+  - gcloud -q auth activate-service-account --key-file ${GOOGLE_APPLICATION_CREDENTIALS}
 
 script:
   - export KUBERNETES_SERVICE_HOST=34.96.203.213
@@ -44,4 +45,3 @@ script:
   - export KUBERNETES_SERVICE_PORT=8080
   - cd ../users-service
   - skaffold dev -p dev
-
