@@ -27,6 +27,7 @@ before_install:
   #- sed -i "s/#CLIENT_ID/$CLIENT_ID/g" api_key.json
   #- cd $SERVICE_HOME
   #- cat api_key.json
+  - cp client_api_key.json /var/secrets/google/client_api_key.json
   - export GOOGLE_APPLICATION_CREDENTIALS="$SERVICE_HOME/client_api_key.json"
   - gcloud config set project $PROJECT_ID
   - gcloud -q auth activate-service-account --key-file ${GOOGLE_APPLICATION_CREDENTIALS}
