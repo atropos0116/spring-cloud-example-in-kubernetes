@@ -20,11 +20,11 @@ before_install:
   - curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && chmod +x skaffold && sudo mv skaffold /usr/local/bin/
   #[Start Authorize]
   - cp ${SERVICE_HOME}/client_api_key.json ${SERVICE_HOME}/api_key.json
-  - sed -i 's/PROJECT_ID/${PROJECT_ID}/g' api_key.json
-  - sed -i 's/PRIVATE_KEY_ID/${PRIVATE_KEY_ID}/g' api_key.json
-  - sed -i 's/PRIVATE_KEY/${PRIVATE_KEY}/g' api_key.json
-  - sed -i 's/CLIENT_EMAIL/${CLIENT_EMAIL}/g' api_key.json
-  - sed -i 's/CLIENT_ID/${CLIENT_ID}/g' api_key.json
+  - sed -i 's/PROJECT_ID/$PROJECT_ID/g' api_key.json
+  - sed -i 's/PRIVATE_KEY_ID/$PRIVATE_KEY_ID/g' api_key.json
+  - sed -i 's/PRIVATE_KEY/$PRIVATE_KEY/g' api_key.json
+  - sed -i 's/CLIENT_EMAIL/$CLIENT_EMAIL/g' api_key.json
+  - sed -i 's/CLIENT_ID/$CLIENT_ID/g' api_key.json
   - cd ${SERVICE_HOME}
   - cat api_key.json
   - export GOOGLE_APPLICATION_CREDENTIALS="${SERVICE_HOME}/api_key.json"
