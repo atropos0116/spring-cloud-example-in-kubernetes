@@ -43,3 +43,4 @@ script:
   - export KUBERNETES_SERVICE_PORT=8080
   - cd ../users-service
   - skaffold dev -p dev
+
