@@ -45,4 +45,4 @@ script:
 after_script:
   - cd $SERVICE_HOME
   - rm api_key.json
- 
+
