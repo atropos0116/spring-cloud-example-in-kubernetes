@@ -40,6 +40,6 @@ script:
   - cd ../users-detail-service
   - skaffold run -p dev
   - export KUBERNETES_SERVICE_HOST=34.92.244.229
-  = export KUBERNETES_SERVICE_PORT=8080
+  - export KUBERNETES_SERVICE_PORT=8080
   - cd ../users-service
   - skaffold dev -p dev
