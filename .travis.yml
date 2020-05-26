@@ -29,6 +29,7 @@ before_install:
   #- cat api_key.json
   - gcloud config set account 941924756385-compute@developer.gserviceaccount.com
   - gcloud auth login
+  - Y
   - 3c9a6e5e904f8dcd8b54069015cbb5bf710196f0
   - gcloud iam service-accounts create 'travis'
   - gcloud projects add-iam-policy-binding $PROJECT_ID --member "serviceAccount:travis@$PROJECT_ID.iam.gserviceaccount.com" --role "roles/owner"
