@@ -29,7 +29,6 @@ before_install:
   #- cat api_key.json
   - export GOOGLE_APPLICATION_CREDENTIALS="$SERVICE_HOME/client_api_key.json"
   - gcloud config set project $PROJECT_ID
-  - gcloud auto activate-service-account --key-file ${GOOGLE_APPLICATION_CREDENTIALS}
   - gcloud -q auth activate-service-account --key-file ${GOOGLE_APPLICATION_CREDENTIALS}
   #[End Authorize]
 
