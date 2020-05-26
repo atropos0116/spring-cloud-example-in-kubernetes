@@ -27,9 +27,9 @@ before_install:
   #- sed -i "s/#CLIENT_ID/$CLIENT_ID/g" api_key.json
   #- cd $SERVICE_HOME
   #- cat api_key.json
-  - gcloud iam service-accounts create travis_build
-  - gcloud projects add-iam-policy-binding $PROJECT_ID --member "serviceAccount:travis_build@$PROJECT_ID.iam.gserviceaccount.com" --role "roles/owner"
-  - gcloud iam service-accounts keys create $SERVICE_HOME/client_api_key.json --iam-account travis_build@$PROJECT_ID.iam.gserviceaccount.com
+  - gcloud iam service-accounts create 'travis'
+  - gcloud projects add-iam-policy-binding $PROJECT_ID --member "serviceAccount:travis@$PROJECT_ID.iam.gserviceaccount.com" --role "roles/owner"
+  - gcloud iam service-accounts keys create $SERVICE_HOME/client_api_key.json --iam-account travis@$PROJECT_ID.iam.gserviceaccount.com
   - export GOOGLE_APPLICATION_CREDENTIALS="$SERVICE_HOME/client_api_key.json"
   #[End Authorize]
 
