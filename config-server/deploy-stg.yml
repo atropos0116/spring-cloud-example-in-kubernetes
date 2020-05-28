@@ -31,4 +31,7 @@ spec:
     spec:
       containers:
       - name: config-server
-        image: atropos0116/config-server:v2
+        image: gcr.io/nifty-inn-274523/config-server:v1
+        env:
+          - name: GOOGLE_APPLICATION_CRENDENTIALS
+            value: var/secrets/google/client_api_key.json
