@@ -39,7 +39,7 @@ before_install:
 script:
   - kubectl version --client -ojson
   - cd $SERVICE_HOME/users-detail-service
-  - ls
+  - pwd
   - skaffold delete | skaffold run -p dev
   - cd ../users-service
   - skaffold delete | skaffold run -p dev
