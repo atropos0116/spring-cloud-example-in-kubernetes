@@ -34,6 +34,7 @@ before_install:
   #[End Authorize]
 
 script:
+  - kubectl version --client -ojson
   - cd $SERVICE_HOME/users-detail-service
   - skaffold run -p dev
   - cd ../users-service
