@@ -41,4 +41,4 @@ script:
   - cd $SERVICE_HOME/users-detail-service
   - skaffold run -p dev
   - cd ../users-service
-  - skaffold dev -p dev
+  - skaffold run -p dev
