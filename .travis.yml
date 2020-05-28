@@ -42,4 +42,3 @@ script:
   - skaffold run -p dev
   - cd ../users-service
   - skaffold dev -p dev
-
