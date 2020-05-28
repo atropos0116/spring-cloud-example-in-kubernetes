@@ -31,15 +31,12 @@ before_install:
   - export GOOGLE_APPLICATION_CREDENTIALS="$SERVICE_HOME/client_api_key.json"
   - gcloud config set project $PROJECT_ID
   - gcloud -q auth activate-service-account --key-file ${GOOGLE_APPLICATION_CREDENTIALS}
+  - gcloud container clusters get-credentails $GCLOUD_CLUSTER_NAME --zone=$GCLOUD_ZONE
   #[End Authorize]
 
 script:
-  - export KUBERNETES_SERVICE_HOST=34.96.203.213
-  - export KUBERNETES_SERVICE_PORT=8080
   - cd $SERVICE_HOME/users-detail-service
   - skaffold run -p dev
-  - export KUBERNETES_SERVICE_HOST=34.92.244.229
-  - export KUBERNETES_SERVICE_PORT=8080
   - cd ../users-service
   - skaffold dev -p dev
 
