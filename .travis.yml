@@ -30,7 +30,7 @@ before_install:
   - export GOOGLE_APPLICATION_CREDENTIALS="$SERVICE_HOME/client_api_key.json"
   - gcloud config set project $PROJECT_ID
   - gcloud -q auth activate-service-account --key-file ${GOOGLE_APPLICATION_CREDENTIALS}
-  - gcloud container clusters get-credentails $GCLOUD_CLUSTER_NAME --zone=$GCLOUD_ZONE
+  - gcloud container clusters get-credentials $GCLOUD_CLUSTER_NAME --zone=$GCLOUD_ZONE
   #[End Authorize]
 
 script:
