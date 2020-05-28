@@ -15,16 +15,16 @@ build:
 deploy:
   kubectl:
     manifests:
-      - *-dev.yml
+      - '*-dev.yml'
 profiles:
 - name: dev
   deploy:
       kubectl:
         manifests:
-          - *-dev.yml
+          - '*-dev.yml'
 - name: stg
   deploy:
       kubectl:
         manifests:
-          - *-stg.yml
+          - '*-stg.yml'
 
