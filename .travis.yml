@@ -43,3 +43,4 @@ script:
   - skaffold delete | skaffold run -p dev
   - cd ../users-service
   - skaffold delete | skaffold run -p dev
+
