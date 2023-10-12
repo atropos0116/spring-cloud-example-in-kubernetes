@@ -31,7 +31,7 @@ public class UsersController {
 		
 		String url = "http://users-detail-service:8080/users/detail/" + user.getId();
 		ResponseEntity<String> responseEntity = restTemplate.getForEntity(url, String.class);
-		System.out.println("Calling via Discovery Client ... " + responseEntity.getBody());
+		System.out.println("Calling via Discovery Client .... " + responseEntity.getBody());
 		
 		StringBuilder sb = new StringBuilder();
 		sb.append(user.toString());
