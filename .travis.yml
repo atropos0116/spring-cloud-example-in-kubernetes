@@ -38,9 +38,9 @@ before_install:
 
 script:
   - cd $SERVICE_HOME/config-server
-  - skaffold delete | skaffold run -p dev
+  - skaffold delete | skaffold run -p stg
   - cd ../users-detail-service
-  - skaffold delete | skaffold run -p dev
+  - skaffold delete | skaffold run -p stg
   - cd ../users-service
-  - skaffold delete | skaffold run -p dev
+  - skaffold delete | skaffold run -p stg
 
