@@ -30,6 +30,10 @@ before_install:
   #- sed -i "s/#CLIENT_ID/$CLIENT_ID/g" api_key.json
   #- cd $SERVICE_HOME
   #- cat api_key.json
+  - export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+  - source ~/.bashrc
+  - gcloud components update
+  - gcloud container clusters get-credentials autopilot-cluster-1
   - export GOOGLE_APPLICATION_CREDENTIALS="$SERVICE_HOME/client_api_key.json"
   - gcloud config set project $PROJECT_ID
   - gcloud -q auth activate-service-account --key-file ${GOOGLE_APPLICATION_CREDENTIALS}
